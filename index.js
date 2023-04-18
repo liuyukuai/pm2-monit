@@ -35,7 +35,6 @@ pmx.initModule(
             if (err) throw err;
             bus.on('process:*', function (type, info) {
                 if (info.process.name === options.module_name) return;
-                console.log(info);
                 const processMsg = Utils.getProcessMsg(info);
                 console.log(JSON.stringify(processMsg))
                 SenderTemplate.sendEvent(processMsg)
@@ -43,7 +42,7 @@ pmx.initModule(
             })
             bus.on('log:*', function (type, info) {
                 if (info.process.name === options.module_name) return;
-                if (type !== 'error') return;
+                if (type !== 'err') return;
                 const errorMsg = Utils.getLogMsg(info);
                 console.log(JSON.stringify(errorMsg))
                 SenderTemplate.sendEvent(errorMsg)
