@@ -11,6 +11,7 @@ pmx.initModule(
         options.throttleTime = options.throttleTime || 5000;
         // 需要发送的类型
         options.types = options.types || 'devops';
+        options.duration = options.duration || 1000 * 30;
         // 项目标识
         options.project = options.project || {};
         options.project.code = options.project.code || '';
@@ -18,7 +19,7 @@ pmx.initModule(
         //开发平台
         options.devops = options.devops || {};
         options.devops.key = options.devops.key || '';
-        options.devops.domain = options.devops.domain || 'http://192.168.8.148:8031';
+        options.devops.domain = options.devops.domain || 'http://api-fat.tsingyun.net/devops';
         options.devops.upload = options.devops.upload || '/openapi/pm2-events';
         options.devops.query = options.devops.query || '/pm2-events/';
         options.devops.status = options.devops.status || '/openapi/pm2-status';
@@ -61,5 +62,5 @@ pmx.initModule(
                     }
                 }
             );
-        }, 1000 * 30);
+        }, options.duration);
     })
