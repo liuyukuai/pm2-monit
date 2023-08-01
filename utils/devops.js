@@ -4,7 +4,8 @@ class Devops {
     constructor(options) {
         this.upload = options.domain + options.upload;
         this.status = options.domain + options.status;
-        this.key = options.key;
+        this.appId = options.appId;
+        this.secret = options.secret;
     }
 
     sendEvent(content) {
@@ -16,11 +17,11 @@ class Devops {
     }
 
     send(content, address) {
-        if (!address || !this.key) {
+        if (!address || !this.appId || !this.secret) {
             console.log("the devops config is empty. ignore sending")
             return;
         }
-        axios.post(`${address}?key=${this.key}`, content)
+        axios.post(`${address}?appId=${this.appId}&secret=${this.secret}`, content)
             .then(res => {
                 console.log("devops sending success = " + JSON.stringify(res.data))
             })

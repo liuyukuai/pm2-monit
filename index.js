@@ -18,7 +18,8 @@ pmx.initModule(
         options.project.name = options.project.name || '测试项目';
         //开发平台
         options.devops = options.devops || {};
-        options.devops.key = options.devops.key || '';
+        options.devops.appId = options.devops.appId || '';
+        options.devops.secret = options.devops.secret || '';
         options.devops.domain = options.devops.domain || 'http://api-fat.tsingyun.net/devops';
         options.devops.upload = options.devops.upload || '/openapi/pm2-events';
         options.devops.query = options.devops.query || '/pm2-events/';
